@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 function generateRandomPassword() {
     let pass = "";
     let nums = "0123456789".split("");
-    let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+    let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".split(
+        ""
+    );
     let specialChars = "!@#$%^&*()_+-=[]{}|;:<>?/".split("");
     let randArray = nums.concat(letters).concat(specialChars);
     let RandLength = Math.floor(Math.random() * (18 - 16 + 1)) + 16;
@@ -46,7 +48,9 @@ const App = () => {
                     type="text"
                     id="randPass"
                     value={pass}
-                    onChange={(e)=>{setPass(e.target.value)}}
+                    onChange={(e) => {
+                        setPass(e.target.value);
+                    }}
                     // readOnly
                     className="border py-1.5 rounded-md border-blue-600 text-blue-700 focus:border-blue-600"
                 />
@@ -56,24 +60,46 @@ const App = () => {
                     }}
                     className="border border-blue-700 font-semibold bg-transparent text-blue-700 px-4 py-2 ml-4 hover:bg-blue-500 hover:text-white transition-all duration-300 rounded-xl"
                 >
-                    {isCopied ? "Copied" : "Copy"}
+                    {isCopied ? (
+                        "Copied"
+                    ) : (
+                        <button>
+                            Copy&nbsp;
+                            <span className="inline-block -mb-1">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="18"
+                                    height="18"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        fill="currentColor"
+                                        d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
+                                    />
+                                </svg>
+                            </span>
+                        </button>
+                    )}
                 </button>
                 <br />
                 <button
                     className="border-2 bg-blue-700 text-white px-8 py-2 mt-8 hover:bg-blue-500 transition-all duration-300 rounded-xl"
                     onClick={() => {
                         setPass(generateRandomPassword());
-                        setIsCopied(false)
+                        setIsCopied(false);
                     }}
                 >
-                    Click to Generate
+                    Click to Generate ✨🚀
                 </button>
                 <br />
                 <span className="mt-10 block">
                     Password Length: {pass.length}
                 </span>
                 <br />
-                <span>My Copied Passwords: {[...copiedPasses].length}</span> <br />
+                <span>
+                    My Copied Passwords: {[...copiedPasses].length}
+                </span>{" "}
+                <br />
                 <ol className="list-decimal inline-block mt-4">
                     {[...copiedPasses].map((passes) => {
                         return <li key={passes}>{passes}</li>;
