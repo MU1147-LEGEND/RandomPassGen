@@ -58,7 +58,7 @@ const App = () => {
                     onClick={() => {
                         copyText();
                     }}
-                    className="border border-blue-700 font-semibold bg-transparent text-blue-700 px-4 py-2 ml-4 hover:bg-blue-500 hover:text-white transition-all duration-300 rounded-xl"
+                    className="border border-blue-700 font-semibold bg-transparent text-blue-700 px-4 py-2 ml-4 hover:bg-blue-500 hover:text-white transition-colors duration-300 rounded-xl active:scale-95"
                 >
                     {isCopied ? (
                         "Copied"
